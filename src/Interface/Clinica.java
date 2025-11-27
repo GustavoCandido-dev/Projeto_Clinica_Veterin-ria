@@ -1,7 +1,8 @@
 package Interface;
 
 public interface Clinica {
-    void cadastrar();
+    void cadastrarMedico();
+    void cadastrarAnimal();
     void notificar();
 
 }
