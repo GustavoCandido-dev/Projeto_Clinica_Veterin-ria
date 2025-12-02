@@ -1,0 +1,12 @@
+import Herancas.Cadastro;
+import Herancas.GerenciarClinica;
+
+public class teste {
+    static void main(String[] args){
+        Cadastro c = new Cadastro();
+
+        c.cadastrarAnimal();
+        GerenciarClinica.exibirCadastros();
+
+    }
+}
