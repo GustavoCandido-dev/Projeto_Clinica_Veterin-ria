@@ -6,9 +6,12 @@ public class Animal {
     private int numeroDosesVacina;
     private boolean animalExotico;
     private String porteAnimal;
+    private boolean possuiCertificado;
 
     public Animal() {} // Construtor
 
+    public boolean isPossuiCertificado() {return possuiCertificado;}
+    public void setPossuiCertificado(boolean possuiCertificado) {this.possuiCertificado = possuiCertificado;}
     public String getNomeAnimal() { return nomeAnimal; }
     public void setNomeAnimal(String nomeAnimal) { this.nomeAnimal = nomeAnimal; }
     public int getIdadeAnimal() { return idadeAnimal; }

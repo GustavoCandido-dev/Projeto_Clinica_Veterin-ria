@@ -33,6 +33,28 @@ public class Cadastro extends Servico {
             }
 
             animalCadastrado.setAnimalExotico(exoticoAnimal == 0);
+            if (exoticoAnimal == 0) {
+                int temCertificado = JOptionPane.showConfirmDialog(
+                        null,
+                        "Você possui o certificado de registro para este animal?",
+                        "Certificado Animal Exótico",
+                        JOptionPane.YES_NO_OPTION
+                );
+                if (temCertificado == JOptionPane.NO_OPTION) {
+                    // Mensagem de cancelamento
+                    JOptionPane.showMessageDialog(null, "Cadastro cancelado. A clínica só pode registrar animais exóticos que possuem certificado.");
+                    
+                    return;
+                }
+
+                // Se chegou aqui, o usuário disse 'Sim'
+                animalCadastrado.setPossuiCertificado(true);
+
+
+            } else {
+
+                animalCadastrado.setPossuiCertificado(false);
+            }
         }
 
 
