@@ -36,14 +36,14 @@ public class Cadastro extends Servico {
             if (exoticoAnimal == 0) {
                 int temCertificado = JOptionPane.showConfirmDialog(
                         null,
-                        "Você possui o certificado de registro para este animal?",
+                        "Você possui o certificado do Ibama para este animal?",
                         "Certificado Animal Exótico",
                         JOptionPane.YES_NO_OPTION
                 );
                 if (temCertificado == JOptionPane.NO_OPTION) {
                     // Mensagem de cancelamento
-                    JOptionPane.showMessageDialog(null, "Cadastro cancelado. A clínica só pode registrar animais exóticos que possuem certificado.");
-                    
+                    JOptionPane.showMessageDialog(null, "Cadastro cancelado. A clínica só pode registrar animais exóticos que possuem certificado do Ibama.");
+
                     return;
                 }
 
@@ -160,41 +160,61 @@ public class Cadastro extends Servico {
     @Override
     public void cadastrarMedico() {
         medicoCadastrado = new Medico();
-        //NOME DO MÉDICO
+
+
         String medicoNome = null;
         while (medicoNome == null) {
-            String inputNome = JOptionPane.showInputDialog("Digite o nome do Médico: ");
+            String inputNome = JOptionPane.showInputDialog("Digite o nome do Veterinário: ");
 
             if (inputNome == null) {
-                JOptionPane.showMessageDialog(null, "Operação cancelada.");
-            } else if (inputNome.equals("")) {
-
+                JOptionPane.showMessageDialog(null, "Cadastro de médico cancelado.");
+                return;
+            } else if (inputNome.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Nome inválido! Digite novamente.");
             } else {
-
                 medicoNome = inputNome;
                 medicoCadastrado.setNomeVeterinario(inputNome);
             }
         }
 
-        //CRM DO MÉDICO
+        // CRM DO MÉDICO
         int salvarCRM = -1;
         while (salvarCRM < 0) {
-            String crmMedico = JOptionPane.showInputDialog("Digite o CRM: ");
-            int numeroCRM = Integer.parseInt(crmMedico);
-            if (numeroCRM < 0) {
-                JOptionPane.showMessageDialog(null, "CRM Inválida.");
-            } else {
-                salvarCRM = numeroCRM;
-                medicoCadastrado.setCrm(salvarCRM);
-                break;
-            }
-            medicoCadastrado.setCrm(salvarCRM);
+            String crmMedico = JOptionPane.showInputDialog("Digite o CRM (Apenas 6 dígitos): ");
 
+            if (crmMedico == null) {
+                JOptionPane.showMessageDialog(null, "Cadastro de médico cancelado.");
+                return;
+            }
+
+            // 1. VERIFICAÇÃO DE 6 DÍGITOS
+            if (crmMedico.length() != 6) {
+                JOptionPane.showMessageDialog(null, "Erro! O CRM deve ter **exatamente 6 dígitos**. Digite novamente.");
+                continue;
+            }
+
+            // 2. CONVERSÃO E TRATAMENTO DE ERROS (try-catch)
+            try {
+                int numeroCRM = Integer.parseInt(crmMedico);
+
+                if (numeroCRM <= 0) {
+                    JOptionPane.showMessageDialog(null, "CRM Inválida. O número deve ser positivo.");
+                } else {
+                    salvarCRM = numeroCRM;
+                    medicoCadastrado.setCrm(salvarCRM);
+                    break; // Sai do loop
+                }
+
+            } catch (NumberFormatException e) {
+
+                JOptionPane.showMessageDialog(null, "Erro! O CRM deve conter apenas **números**.");
+            }
         }
+
+
         GerenciarClinica.adicionarMedico(medicoCadastrado);
 
-        JOptionPane.showMessageDialog(null, "Médico '" + medicoCadastrado.getNomeVeterinario() + "' cadastrado com sucesso!");
+        JOptionPane.showMessageDialog(null, "Veterinário '" + medicoCadastrado.getNomeVeterinario() + "' cadastrado com sucesso!");
     }
 
 
