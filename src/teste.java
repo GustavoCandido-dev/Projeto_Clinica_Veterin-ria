@@ -6,7 +6,7 @@ public class teste {
         Cadastro c = new Cadastro();
 
         c.cadastrarMedico();
-        GerenciarClinica.exibirCadastros();
+        GerenciarClinica.exibirMedicos();
 
     }
 }

@@ -157,7 +157,7 @@ public class Cadastro extends Servico {
 
         //CRM DO MÉDICO
         int salvarCRM = -1;
-        while (salvarCRM < 0){
+        while (salvarCRM < 0) {
             String crmMedico = JOptionPane.showInputDialog("Digite o CRM: ");
             int numeroCRM = Integer.parseInt(crmMedico);
             if (numeroCRM < 0) {
@@ -170,9 +170,9 @@ public class Cadastro extends Servico {
             medicoCadastrado.setCrm(salvarCRM);
 
         }
-        GerenciarClinica.adicionarCadastro(this);
+        GerenciarClinica.adicionarMedico(medicoCadastrado);
 
-        JOptionPane.showMessageDialog(null, "Animal '" + medicoCadastrado.getNomeVeterinario() + "' cadastrado com sucesso!");
+        JOptionPane.showMessageDialog(null, "Médico '" + medicoCadastrado.getNomeVeterinario() + "' cadastrado com sucesso!");
     }
 
 
