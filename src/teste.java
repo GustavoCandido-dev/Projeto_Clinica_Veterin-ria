@@ -5,7 +5,7 @@ public class teste {
     static void main(String[] args){
         Cadastro c = new Cadastro();
 
-        c.cadastrarAnimal();
+        c.cadastrarMedico();
         GerenciarClinica.exibirCadastros();
 
     }

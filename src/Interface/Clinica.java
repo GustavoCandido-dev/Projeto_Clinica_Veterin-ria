@@ -5,7 +5,6 @@ public interface Clinica {
     void cadastrarMedico();
     void cadastrarAnimal();
     void notificar();
-    void cadastrarConsulta();
-    void cadastrarBanho();
+
 
 }

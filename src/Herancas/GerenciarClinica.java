@@ -24,6 +24,7 @@ public class GerenciarClinica {
             Medico medico = cadastro.getMedicoCadastrado();
 
             if (animal != null) {
+                String mensagemAnimal = "=== Animais Cadastrados ===\n";
                 mensagem = mensagem + "Nome: " + animal.getNomeAnimal() +
                         ", Idade: " + animal.getIdadeAnimal() +
                         ", Porte: " + animal.getPorteAnimal() +
@@ -32,6 +33,7 @@ public class GerenciarClinica {
             }
 
             if (medico != null) {
+                String mensagemMedico = "=== Médicos Cadastrados ===\n";
                 mensagem = mensagem + "Veterinário: " + medico.getNomeVeterinario() +
                     " (CRM: " + medico.getCrm() + ")\n";
         }

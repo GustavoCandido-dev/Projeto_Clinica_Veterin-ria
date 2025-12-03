@@ -137,18 +137,45 @@ public class Cadastro extends Servico {
 
     @Override
     public void cadastrarMedico() {
+        medicoCadastrado = new Medico();
+        //NOME DO MÉDICO
+        String medicoNome = null;
+        while (medicoNome == null) {
+            String inputNome = JOptionPane.showInputDialog("Digite o nome do Médico: ");
 
+            if (inputNome == null) {
+                JOptionPane.showMessageDialog(null, "Operação cancelada.");
+            } else if (inputNome.equals("")) {
+
+                JOptionPane.showMessageDialog(null, "Nome inválido! Digite novamente.");
+            } else {
+
+                medicoNome = inputNome;
+                medicoCadastrado.setNomeVeterinario(inputNome);
+            }
+        }
+
+        //CRM DO MÉDICO
+        int salvarCRM = -1;
+        while (salvarCRM < 0){
+            String crmMedico = JOptionPane.showInputDialog("Digite o CRM: ");
+            int numeroCRM = Integer.parseInt(crmMedico);
+            if (numeroCRM < 0) {
+                JOptionPane.showMessageDialog(null, "CRM Inválida.");
+            } else {
+                salvarCRM = numeroCRM;
+                medicoCadastrado.setCrm(salvarCRM);
+                break;
+            }
+            medicoCadastrado.setCrm(salvarCRM);
+
+        }
+        GerenciarClinica.adicionarCadastro(this);
+
+        JOptionPane.showMessageDialog(null, "Animal '" + medicoCadastrado.getNomeVeterinario() + "' cadastrado com sucesso!");
     }
 
-    @Override
-    public void cadastrarConsulta() {
 
-    }
-
-    @Override
-    public void cadastrarBanho() {
-
-    }
 
     public Animal getAnimalCadastrado() {
         return animalCadastrado;

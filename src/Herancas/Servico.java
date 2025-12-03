@@ -75,8 +75,7 @@ public abstract class Servico implements Clinica {
     @Override
     public abstract  void cadastrarMedico();
 
-    @Override
-    public abstract void cadastrarConsulta();
+
 
 
 }
